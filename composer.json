@@ -1,0 +1,33 @@
+{
+    "name": "brandembassy/nette-di-annotation-extension",
+    "license": "MIT",
+    "require": {
+        "php": ">=7.4",
+        "nette/di": "^3.0"
+    },
+    "require-dev": {
+        "brandembassy/coding-standard": "^8.7",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "BrandEmbassy\\Nette\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "BrandEmbassyTest\\Nette\\": "tests"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "scripts": {
+        "phpcs": "./vendor/bin/phpcs --standard=BrandEmbassyCodingStandard src",
+        "phpcbf": "./vendor/bin/phpcbf --standard=BrandEmbassyCodingStandard src",
+        "phpstan": "./vendor/bin/phpstan analyze -c phpstan.neon src --memory-limit=-1",
+        "phpunit": "./vendor/bin/phpunit tests --no-coverage"
+    }
+}
