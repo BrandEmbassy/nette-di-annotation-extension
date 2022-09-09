@@ -19,7 +19,7 @@ final class AnnotationExtensionTest extends TestCase
     /**
      * @throws Throwable
      */
-    public function testRegisteringDiscoveredServices()
+    public function testRegisteringDiscoveredServices(): void
     {
         $annotationExtension = $this->createAndSetupExtension();
         $builder = $annotationExtension->getContainerBuilder();
@@ -37,7 +37,7 @@ final class AnnotationExtensionTest extends TestCase
     /**
      * @throws Throwable
      */
-    public function testNotRegisteringClassWithoutDiscoveryAnnotation()
+    public function testNotRegisteringClassWithoutDiscoveryAnnotation(): void
     {
         $annotationExtension = $this->createAndSetupExtension();
         $builder = $annotationExtension->getContainerBuilder();
@@ -51,7 +51,7 @@ final class AnnotationExtensionTest extends TestCase
     /**
      * @throws Throwable
      */
-    public function testNotRegisteringInterfacesEvenWithDiscoveryAnnotation()
+    public function testNotRegisteringInterfacesEvenWithDiscoveryAnnotation(): void
     {
         $annotationExtension = $this->createAndSetupExtension();
         $builder = $annotationExtension->getContainerBuilder();
