@@ -5,6 +5,7 @@ namespace BrandEmbassy\Nette\DI\Extensions;
 use BrandEmbassyTest\Nette\DI\Extensions\fixtures\DoNotDiscoverInterface;
 use BrandEmbassyTest\Nette\DI\Extensions\fixtures\NotToBeDiscovered;
 use BrandEmbassyTest\Nette\DI\Extensions\fixtures\subDir\ToBeDiscoveredFromSubDir;
+use BrandEmbassyTest\Nette\DI\Extensions\fixtures\subDir\ToBeDiscoveredFromSubDirWithInlineAnnotation;
 use BrandEmbassyTest\Nette\DI\Extensions\fixtures\ToBeDiscovered;
 use Nette\DI\Compiler;
 use Nette\DI\MissingServiceException;
@@ -25,9 +26,11 @@ final class AnnotationExtensionTest extends TestCase
 
         $toBeDiscovered = $builder->getDefinitionByType(ToBeDiscovered::class);
         $toBeDiscoveredFromSubDir = $builder->getDefinitionByType(ToBeDiscoveredFromSubDir::class);
+        $toBeDiscoveredFromSubDirWithInlineAnnotation = $builder->getDefinitionByType(ToBeDiscoveredFromSubDirWithInlineAnnotation::class);
 
         Assert::assertSame($toBeDiscovered->getType(), ToBeDiscovered::class);
         Assert::assertSame($toBeDiscoveredFromSubDir->getType(), ToBeDiscoveredFromSubDir::class);
+        Assert::assertSame($toBeDiscoveredFromSubDirWithInlineAnnotation->getType(), ToBeDiscoveredFromSubDirWithInlineAnnotation::class);
     }
 
 
