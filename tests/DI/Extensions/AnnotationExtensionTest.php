@@ -1,7 +1,8 @@
 <?php declare(strict_types = 1);
 
-namespace BrandEmbassy\Nette\DI\Extensions;
+namespace BrandEmbassyTest\Nette\DI\Extensions;
 
+use BrandEmbassy\Nette\DI\Extensions\AnnotationExtension;
 use BrandEmbassyTest\Nette\DI\Extensions\fixtures\DoNotDiscoverInterface;
 use BrandEmbassyTest\Nette\DI\Extensions\fixtures\NotToBeDiscovered;
 use BrandEmbassyTest\Nette\DI\Extensions\fixtures\subDir\ToBeDiscoveredFromSubDir;
