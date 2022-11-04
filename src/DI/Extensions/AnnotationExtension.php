@@ -101,7 +101,7 @@ class AnnotationExtension extends CompilerExtension
 
             if ($reflectionClass->isInstantiable()
                 && $reflectionClass->getDocComment() !== false
-                && preg_match('#@discovery\n#s', $reflectionClass->getDocComment()) === 1
+                && preg_match('#@discovery[\n\s]#s', $reflectionClass->getDocComment()) === 1
             ) {
                 $this->classes[] = $class;
             }

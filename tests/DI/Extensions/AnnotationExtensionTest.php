@@ -1,10 +1,12 @@
 <?php declare(strict_types = 1);
 
-namespace BrandEmbassy\Nette\DI\Extensions;
+namespace BrandEmbassyTest\Nette\DI\Extensions;
 
+use BrandEmbassy\Nette\DI\Extensions\AnnotationExtension;
 use BrandEmbassyTest\Nette\DI\Extensions\fixtures\DoNotDiscoverInterface;
 use BrandEmbassyTest\Nette\DI\Extensions\fixtures\NotToBeDiscovered;
 use BrandEmbassyTest\Nette\DI\Extensions\fixtures\subDir\ToBeDiscoveredFromSubDir;
+use BrandEmbassyTest\Nette\DI\Extensions\fixtures\subDir\ToBeDiscoveredFromSubDirWithInlineAnnotation;
 use BrandEmbassyTest\Nette\DI\Extensions\fixtures\ToBeDiscovered;
 use Nette\DI\Compiler;
 use Nette\DI\MissingServiceException;
@@ -18,23 +20,25 @@ final class AnnotationExtensionTest extends TestCase
     /**
      * @throws Throwable
      */
-    public function testRegisteringDiscoveredServices()
+    public function testRegisteringDiscoveredServices(): void
     {
         $annotationExtension = $this->createAndSetupExtension();
         $builder = $annotationExtension->getContainerBuilder();
 
         $toBeDiscovered = $builder->getDefinitionByType(ToBeDiscovered::class);
         $toBeDiscoveredFromSubDir = $builder->getDefinitionByType(ToBeDiscoveredFromSubDir::class);
+        $toBeDiscoveredFromSubDirWithInlineAnnotation = $builder->getDefinitionByType(ToBeDiscoveredFromSubDirWithInlineAnnotation::class);
 
         Assert::assertSame($toBeDiscovered->getType(), ToBeDiscovered::class);
         Assert::assertSame($toBeDiscoveredFromSubDir->getType(), ToBeDiscoveredFromSubDir::class);
+        Assert::assertSame($toBeDiscoveredFromSubDirWithInlineAnnotation->getType(), ToBeDiscoveredFromSubDirWithInlineAnnotation::class);
     }
 
 
     /**
      * @throws Throwable
      */
-    public function testNotRegisteringClassWithoutDiscoveryAnnotation()
+    public function testNotRegisteringClassWithoutDiscoveryAnnotation(): void
     {
         $annotationExtension = $this->createAndSetupExtension();
         $builder = $annotationExtension->getContainerBuilder();
@@ -48,7 +52,7 @@ final class AnnotationExtensionTest extends TestCase
     /**
      * @throws Throwable
      */
-    public function testNotRegisteringInterfacesEvenWithDiscoveryAnnotation()
+    public function testNotRegisteringInterfacesEvenWithDiscoveryAnnotation(): void
     {
         $annotationExtension = $this->createAndSetupExtension();
         $builder = $annotationExtension->getContainerBuilder();
