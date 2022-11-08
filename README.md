@@ -5,7 +5,7 @@ Allows you to register class as a service via specific annotation.
 **Register extension**
 ```neon
 extensions:
-    discovery: BE\DI\Extension\AnnotationExtension('%tempDir%')    
+    discovery: BrandEmbassy\Nette\DI\Extensions\AnnotationExtension('%tempDir%')    
 ```
 
 **Set up extension**
