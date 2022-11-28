@@ -16,7 +16,6 @@ use function array_keys;
 use function array_unique;
 use function class_exists;
 use function interface_exists;
-use function is_callable;
 use function is_dir;
 use function is_string;
 use function preg_match;
@@ -28,7 +27,7 @@ use function trait_exists;
  */
 class AnnotationExtension extends CompilerExtension
 {
-    private const ANNOTATION_NAME = 'discovery';
+    public const ANNOTATION_NAME = 'discovery';
 
     /** @var array<class-string> */
     private array $classes = [];
@@ -40,10 +39,6 @@ class AnnotationExtension extends CompilerExtension
         string $tempDir
     ) {
         $this->tempDir = $tempDir . '/cache/nette.discovery';
-
-        if (is_callable(['\Doctrine\Common\Annotations\AnnotationReader', 'addGlobalIgnoredName'])) {
-            \Doctrine\Common\Annotations\AnnotationReader::addGlobalIgnoredName(self::ANNOTATION_NAME);
-        }
     }
 
 

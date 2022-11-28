@@ -11,9 +11,12 @@ extensions:
 **Set up extension**
 
 `in` defines a directory in which the extension will search for possible services.
+`files` is optional (default `*.php`) and defines a file pattern ny which the extension searches for a possible service
+
 ```neon
 discovery:
     in: '%appDir%'
+    files: '*[!Test].php' # any php file that doesn't end with "Test"
 ```
 
 **Add `discovery` annotation to your service classes**
@@ -29,4 +32,11 @@ class AwesomeService
 {
     /* ... */
 }
+```
+
+**Compatibility with doctrine annotation mapping**
+
+Exclude annotation in bootstrap file of your application
+```php
+\Doctrine\Common\Annotations\AnnotationReader::addGlobalIgnoredName(\BrandEmbassy\Nette\DI\Extensions\AnnotationExtension::ANNOTATION_NAME);
 ```
