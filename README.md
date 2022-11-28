@@ -11,6 +11,7 @@ extensions:
 **Set up extension**
 
 `in` defines a directory in which the extension will search for possible services.
+
 `files` is optional (default `*.php`) and defines a file pattern ny which the extension searches for a possible service
 
 ```neon
