@@ -27,6 +27,8 @@ use function trait_exists;
  */
 class AnnotationExtension extends CompilerExtension
 {
+    public const ANNOTATION_NAME = 'discovery';
+
     /** @var array<class-string> */
     private array $classes = [];
 
@@ -101,7 +103,7 @@ class AnnotationExtension extends CompilerExtension
 
             if ($reflectionClass->isInstantiable()
                 && $reflectionClass->getDocComment() !== false
-                && preg_match('#@discovery[\n\s]#s', $reflectionClass->getDocComment()) === 1
+                && preg_match('#@' . self::ANNOTATION_NAME . '[\n\s]#s', $reflectionClass->getDocComment()) === 1
             ) {
                 $this->classes[] = $class;
             }
