@@ -2,12 +2,13 @@
     "name": "brandembassy/nette-di-annotation-extension",
     "license": "MIT",
     "require": {
-        "php": ">=7.4",
-        "nette/di": "^3.0"
+        "php": ">=8.1",
+        "nette/di": "^3.1",
+        "nette/robot-loader": "^3.4"
     },
     "require-dev": {
-        "brandembassy/coding-standard": "^8.7",
-        "phpunit/phpunit": "^9.5"
+        "brandembassy/coding-standard": "^11.0",
+        "phpunit/phpunit": "^9.6"
     },
     "autoload": {
         "psr-4": {
@@ -16,7 +17,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "BrandEmbassyTest\\Nette\\": "tests"
+            "BrandEmbassyTest\\Nette\\": "tests/"
         }
     },
     "config": {
@@ -25,8 +26,8 @@
         }
     },
     "scripts": {
-        "phpcs": "./vendor/bin/phpcs --standard=BrandEmbassyCodingStandard src",
-        "phpcbf": "./vendor/bin/phpcbf --standard=BrandEmbassyCodingStandard src",
+        "check-cs": "vendor/bin/ecs check --ansi",
+        "fix-cs": "vendor/bin/ecs check --fix --ansi",
         "phpstan": "./vendor/bin/phpstan analyze -c phpstan.neon src --memory-limit=-1",
         "phpunit": "./vendor/bin/phpunit tests --no-coverage"
     }

@@ -18,6 +18,8 @@ extensions:
 discovery:
     in: '%appDir%'
     files: '*.php'
+    excludeClasses: # optional - regex pattern to exclude classes from discovery
+        - '/.*Test$/'
 ```
 
 **Add `discovery` annotation to your service classes**
