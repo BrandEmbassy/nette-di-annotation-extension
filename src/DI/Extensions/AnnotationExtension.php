@@ -29,7 +29,9 @@ class AnnotationExtension extends CompilerExtension
 {
     public const ANNOTATION_NAME = 'discovery';
 
-    /** @var array<class-string> */
+    /**
+     * @var array<class-string>
+     */
     private array $classes = [];
 
     private string $tempDir;
@@ -48,6 +50,9 @@ class AnnotationExtension extends CompilerExtension
             Expect::structure([
                 'in' => Expect::string()->required(),
                 'files' => Expect::anyOf(Expect::listOf('string'), Expect::string()->castTo('array'))->default([]),
+                'excludeClasses' => Expect::anyOf(Expect::listOf('string'), Expect::string()->castTo('array'))->default(
+                    [],
+                ),
             ]),
         )->before(
             fn($val) => is_string($val['in'] ?? null)
@@ -93,6 +98,12 @@ class AnnotationExtension extends CompilerExtension
         $classes = array_unique(array_keys($robot->getIndexedClasses()));
 
         foreach ($classes as $class) {
+            foreach ($config->excludeClasses as $excludeClass) {
+                if (preg_match($excludeClass, $class) === 1) {
+                    continue 2;
+                }
+            }
+
             if (!class_exists($class) && !interface_exists($class) && !trait_exists($class)) {
                 throw new InvalidStateException(
                     sprintf('Class %s was found, but it cannot be loaded by autoloading.', $class),
