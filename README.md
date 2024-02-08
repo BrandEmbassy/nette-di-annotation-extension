@@ -17,7 +17,7 @@ extensions:
 ```neon
 discovery:
     in: '%appDir%'
-    files: '*[!Test].php' # any php file that doesn't end with "Test"
+    files: '*.php'
 ```
 
 **Add `discovery` annotation to your service classes**
