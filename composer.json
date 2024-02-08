@@ -3,11 +3,12 @@
     "license": "MIT",
     "require": {
         "php": ">=8.1",
-        "nette/di": "^3.0"
+        "nette/di": "^3.1",
+        "nette/robot-loader": "^3.4"
     },
     "require-dev": {
         "brandembassy/coding-standard": "^11.0",
-        "phpunit/phpunit": "^9.5"
+        "phpunit/phpunit": "^9.6"
     },
     "autoload": {
         "psr-4": {
